@@ -17,16 +17,22 @@
     font-family: 'Inter', Arial, sans-serif;
 }
 
+/*Smooth scroll*/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #FFF5ED;
     color: #FFF5ED;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .container {
     background-color: #1a1a1a;
     width: 100%;
-    max-width: 1440px;
-    min-height: 100vh; /* TAMBAHKAN: Pastikan container mengisi layar penuh */
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
@@ -38,26 +44,48 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .nav-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: flex-end;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .nav-button {
     background-color: #82e253;
     color: #000;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.nav-button:hover {
+    background-color: #fff;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(130, 226, 83, 0.3);
+}
+
+.nav-button:active {
+    transform: translateY(0);
 }
 
 .portfolio-container {
@@ -65,39 +93,45 @@ header {
     background-color: #1a1a1a;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px 20px; /* TAMBAHKAN: Berikan padding */
+    align-items: flex-end;
+    padding: 120px 20px 0px 20px;
+    min-height: 70vh;
 }
 
 .portfolio-title {
     font-family: 'CustomPortfolioFont', serif;
-    font-size: 167pt;
+    font-size: clamp(65pt, 16.2vw, 227pt);
     font-weight: 900;
     text-transform: uppercase;
     line-height: 1;
-    letter-spacing: 0px;
+    letter-spacing: -0.02em;
     color: #fff5ed;
     text-align: center;
+    width: 100%;
+    margin: 0; 
+    padding: 0;
+    transform: translateY(10%);
 }
 
 .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 20px 80px 20px; /* PERBESAR: Tambahkan padding bottom yang lebih besar */
-    background-color: #FFF5ED; /* TAMBAHKAN: Background yang jelas */
-    min-height: 400px; /* TAMBAHKAN: Minimal tinggi untuk memberikan ruang */
+    padding: 0px 20px 80px 20px;
+    background-color: #FFF5ED;
+    min-height: 400px;
+    width: 100%;
 }
 
 .intro {
     max-width: 60%;
-    z-index: 10; /* TAMBAHKAN: Pastikan tidak tertumpuk */
-    position: relative; /* TAMBAHKAN */
+    z-index: 10;
+    position: relative;
 }
 
 h2.greeting {
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 10pt;
+    font-size: clamp(8pt, 2vw, 10pt);
     color: #1a1a1a;
     font-weight: 500;
     margin-bottom: 20px;
@@ -107,7 +141,7 @@ h2.greeting {
 
 h1.name {
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 24pt;
+    font-size: clamp(18pt, 4vw, 24pt);
     color: #1a1a1a;
     font-weight: 700;
     margin-bottom: 20px;
@@ -119,7 +153,7 @@ h1.name {
 h3.profession {
     font-family: 'Inter', Arial, sans-serif;
     color: #1a1a1a;
-    font-size: 12pt;
+    font-size: clamp(10pt, 2.5vw, 12pt);
     margin-left: 20px;
     font-weight: 500;
     letter-spacing: 0;
@@ -136,15 +170,20 @@ h3.profession {
     }
 }
   
+.sliding-image {
+    animation: slideFromLeft 1.5s ease-out forwards infinite;
+}
 
 .illustration {
     width: 35%;
-    z-index: 10; /* TAMBAHKAN: Pastikan tidak tertumpuk */
-    position: relative; /* TAMBAHKAN */
+    z-index: 10;
+    position: relative;
+    max-width: 300px;
 }
 
 .illustration img {
     width: 100%;
+    height: auto;
     max-width: 260px;
 }
 
@@ -152,23 +191,24 @@ h3.profession {
 
 .portfolio-gallery {
     background-color: #FFF5ED;
-    padding: 100px 20px 80px 20px; /* PERBESAR: Tambahkan padding top yang lebih besar */
-    margin-top: 0; /* TAMBAHKAN: Hilangkan margin negatif jika ada */
-    position: relative; /* TAMBAHKAN */
-    z-index: 5; /* TAMBAHKAN */
+    padding: 100px 20px 80px 20px;
+    margin-top: 0;
+    position: relative;
+    z-index: 5;
+    width: 100%;
 }
 
 .gallery-header {
     text-align: right;
     margin-bottom: 60px;
-    margin-top: 0; /* HILANGKAN: margin-top yang berlebihan */
+    margin-top: 0;
     margin-right: 50px;
-    padding-top: 40px; /* TAMBAHKAN: Padding untuk memberikan ruang */
+    padding-top: 40px;
 }
 
 .gallery-title {
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 36pt;
+    font-size: clamp(24pt, 6vw, 36pt);
     color: #1a1a1a;
     font-weight: 800;
     margin-bottom: 20px;
@@ -178,7 +218,7 @@ h3.profession {
 
 .gallery-subtitle {
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 14pt;
+    font-size: clamp(12pt, 3vw, 14pt);
     color: #666;
     font-weight: 400;
     max-width: 600px;
@@ -187,10 +227,11 @@ h3.profession {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .portfolio-item {
@@ -207,11 +248,10 @@ h3.profession {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* Portfolio Image */
 .portfolio-image {
     width: 100%;
     height: 250px;
-    background-size: cover;
-    background-position: center;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -219,6 +259,23 @@ h3.profession {
     justify-content: center;
 }
 
+/* Style untuk gambar */
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+    transition: all 0.4s ease;
+    filter: blur(50%);
+}
+
+/* hilangkan blur, tambah dark overlay */
+.portfolio-item:hover .project-img {
+    filter: blur(0) brightness(0.8);
+    transform: scale(1.05);
+}
+
+/* Overlay untuk darkening effect saat hover */
 .portfolio-image::before {
     content: '';
     position: absolute;
@@ -226,13 +283,14 @@ h3.profession {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(130, 226, 83, 0.8), rgba(26, 26, 26, 0.8));
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0);
+    opacity: 1;
+    transition: all 0.4s ease;
+    z-index: 1;
 }
 
 .portfolio-item:hover .portfolio-image::before {
-    opacity: 1;
+    background: rgba(0, 0, 0, 0.2); /* Gelap 20% saat hover */
 }
 
 .portfolio-overlay {
@@ -243,65 +301,51 @@ h3.profession {
     color: white;
     text-align: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.4s ease;
     z-index: 3;
 }
 
 .portfolio-overlay h3 {
     font-size: 20px;
     font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(130, 226, 83, 0.9);
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .portfolio-item:hover .portfolio-overlay {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 .project-placeholder {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 14px;
     font-weight: 600;
-    text-align: center;
-    z-index: 1;
+    text-align: left;
+    z-index: 2;
     position: absolute;
     bottom: 15px;
     left: 15px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
     padding: 8px 12px;
-    border-radius: 6px;
-    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .portfolio-item:hover .project-placeholder {
-    opacity: 0.7;
-    transform: scale(0.9);
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Project Background Colors */
-.project-a-bg {
-    background: linear-gradient(135deg, #82e253, #6bc73e);
-}
-
-.project-b-bg {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-}
-
-.project-c-bg {
-    background: linear-gradient(135deg, #f093fb, #f5576c);
-}
-
-.project-d-bg {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-}
-
-.project-e-bg {
-    background: linear-gradient(135deg, #fa709a, #fee140);
-}
-
-.project-f-bg {
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
-}
 
 .portfolio-info {
     padding: 25px;
@@ -374,12 +418,13 @@ h3.profession {
     background-color: #1a1a1a;
     padding: 80px 20px;
     text-align: center;
-    margin-top: 0; /* TAMBAHKAN: Hilangkan margin */
+    margin-top: 0;
+    width: 100%;
 }
 
 .contact-title {
     color: #f9f3e5;
-    font-size: 36pt;
+    font-size: clamp(20pt, 5vw, 36pt);
     font-weight: 800;
     margin-bottom: 30px;
     text-transform: uppercase;
@@ -387,7 +432,7 @@ h3.profession {
 
 .contact-subtitle {
     color: #82e253;
-    font-size: 16px;
+    font-size: clamp(14px, 3vw, 16px);
     margin-bottom: 40px;
     max-width: 500px;
     margin-left: auto;
@@ -408,43 +453,157 @@ h3.profession {
     font-weight: 500;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* SCROLL TO TOP BUTTON */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #82e253;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(130, 226, 83, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    z-index: 1000;
+}
 
-@media (max-width: 1440px) {
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background-color: #1a1a1a;
+    color: #82e253;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(130, 226, 83, 0.4);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1200px) {
     .container {
         width: 100%;
-        max-width: none;
-        min-height: auto; /* UBAH: untuk tablet/desktop kecil */
     }
     
     .portfolio-container {
-        height: auto;
-        padding: 60px 20px 40px 20px; /* SESUAIKAN */
+        min-height: 60vh;
+        padding: 100px 15px 0px 15px;
+        align-items: flex-end; 
     }
-
+    
+    .portfolio-title {
+        font-size: clamp(57pt, 14.6vw, 162pt); 
+        padding: 0; 
+        margin: 0; 
+        transform: translateY(10%); 
+    }
+    
     .content {
-        padding: 50px 20px 60px 20px; /* SESUAIKAN */
+        padding: 0px 15px 70px 15px; 
     }
+    
+    .gallery-header {
+        margin-right: 20px;
+        text-align: center;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 15px;
+    }
+}
 
-    .portfolio-gallery {
-        padding: 80px 20px 60px 20px; /* SESUAIKAN */
+@media (max-width: 1024px) {
+    .portfolio-container {
+        min-height: 50vh; 
+        padding: 80px 20px 50px 20px; 
+    }
+    
+    .portfolio-title {
+        font-size: clamp(54pt, 13.5vw, 135pt); 
+        padding: 15px 10px;
+    }
+    
+    .content {
+        flex-direction: column;
+        padding: 40px 20px 60px 20px;
+        text-align: center;
+    }
+    
+    .intro {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    h2.greeting, h1.name, h3.profession {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .illustration {
+        width: 50%;
+    }
+    
+    .gallery-header {
+        text-align: center;
+        margin-right: 0;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        min-height: auto; /* UBAH: untuk mobile */
+        min-height: auto;
+    }
+
+    header {
+        position: static;
+        background-color: #1a1a1a;
+        backdrop-filter: none;
+    }
+
+    .portfolio-container {
+        padding: 40px 20px 50px 20px; /*Padding adjustment untuk mobile */
+        min-height: 40vh; /* Height adjustment untuk mobile */
+    }
+
+    .nav-buttons {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .nav-button {
+        padding: 8px 15px;
+        font-size: 12px;
     }
 
     .portfolio-title {
-        font-size: 40pt;
-        padding: 20px;
+        font-size: clamp(45pt, 10.8vw, 72pt);
+        padding: 20px 10px;
+        line-height: 0.9;
     }
 
     .content {
         flex-direction: column;
-        padding: 40px 20px 60px 20px; /* PERBESAR: padding bottom */
-        min-height: 350px; /* KURANGI: tinggi minimal */
+        padding: 0px 15px 60px 15px;
+        min-height: 350px;
     }
 
     .intro {
@@ -459,29 +618,29 @@ h3.profession {
     }
 
     h1.name {
-        font-size: 20pt;
+        font-size: clamp(16pt, 4vw, 20pt);
     }
 
     .illustration {
         width: 60%;
         display: flex;
         justify-content: center;
-        margin-bottom: 20px; /* TAMBAHKAN: margin bottom */
+        margin-bottom: 20px;
     }
 
     .portfolio-gallery {
-        padding: 60px 10px 40px 10px; /* PERBESAR: padding top */
+        padding: 60px 10px 40px 10px;
     }
 
     .gallery-header {
         text-align: center;
         margin-right: 0;
-        margin-top: 0; /* HILANGKAN: margin top */
-        padding: 20px 20px 0 20px; /* SESUAIKAN: padding */
+        margin-top: 0;
+        padding: 20px 15px 0 15px;
     }
 
     .gallery-title {
-        font-size: 24pt;
+        font-size: clamp(20pt, 6vw, 28pt);
         text-align: center;
     }
 
@@ -508,51 +667,72 @@ h3.profession {
         font-size: 14px;
     }
 
-    .nav-buttons {
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .nav-button {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-
     .contact-info {
         flex-direction: column;
         gap: 20px;
     }
 
     .contact-title {
-        font-size: 24pt;
+        font-size: clamp(18pt, 5vw, 24pt);
     }
 
     .contact-section {
-        padding: 60px 20px;
+        padding: 60px 15px;
+    }
+
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 16px;
+    }
+
+    /* Mobile responsive untuk images */
+    .portfolio-image {
+        height: 200px;
+    }
+    
+    .project-img {
+        filter: blur(40%);
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 }
 
 @media (max-width: 480px) {
+    .portfolio-container {
+        padding: 30px 10px 0px 10px;
+        min-height: 35vh;
+        align-items: flex-end;
+    }
+    
     .portfolio-title {
-        font-size: 32pt;
-        padding: 15px;
+        font-size: clamp(32pt, 8.1vw, 49pt);
+        padding: 0; 
+        margin: 0; 
+        line-height: 1; 
+        transform: translateY(10%); 
     }
 
     .content {
-        padding: 30px 15px 50px 15px; /* SESUAIKAN: padding */
-        min-height: 300px; /* KURANGI: tinggi minimal */
+        padding: 0px 10px 50px 10px; 
+        min-height: 300px;
     }
 
     .portfolio-gallery {
-        padding: 50px 5px 30px 5px; /* SESUAIKAN: padding */
+        padding: 50px 5px 30px 5px;
     }
 
     .gallery-header {
-        padding: 15px 15px 0 15px; /* SESUAIKAN: padding */
+        padding: 15px 10px 0 10px;
     }
 
     .gallery-title {
-        font-size: 20pt;
+        font-size: clamp(18pt, 6vw, 24pt);
     }
 
     .gallery-grid {
@@ -566,20 +746,21 @@ h3.profession {
     }
 
     h1.name {
-        font-size: 18pt;
+        font-size: clamp(14pt, 4vw, 18pt);
     }
 
     .nav-button {
         padding: 6px 12px;
         font-size: 11px;
+        border-radius: 20px;
     }
 
     .contact-section {
-        padding: 40px 15px;
+        padding: 40px 10px;
     }
 
     .contact-title {
-        font-size: 20pt;
+        font-size: clamp(16pt, 5vw, 20pt);
     }
 
     .view-more-btn {
@@ -589,25 +770,95 @@ h3.profession {
 
     .illustration {
         width: 70%;
-        margin-bottom: 15px; /* TAMBAHKAN: margin bottom */
+        margin-bottom: 15px;
+    }
+
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 14px;
+    }
+
+    /* Mobile kecil responsive untuk images */
+    .portfolio-image {
+        height: 180px;
+    }
+    
+    .project-img {
+        filter: blur(30%);
+    }
+    
+    .project-placeholder {
+        font-size: 12px;
+        padding: 6px 10px;
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
 
-@media (max-width: 896px) and (orientation: landscape) {
+/*  Fix untuk layar landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 500px) {
+    header {
+        position: static;
+        padding: 10px 15px;
+    }
+
+    .portfolio-container {
+        padding: 20px 15px;
+    }
+
     .portfolio-title {
-        font-size: 36pt;
+        font-size: clamp(24pt, 6vw, 40pt);
+        padding: 10px;
     }
 
     .content {
-        padding: 30px 20px 40px 20px; /* SESUAIKAN: padding */
+        padding: 20px 15px 30px 15px;
+        min-height: 250px;
     }
 
     .portfolio-gallery {
-        padding: 50px 20px 30px 20px; /* SESUAIKAN: padding */
+        padding: 40px 15px 20px 15px;
     }
 
     .gallery-header {
-        margin-top: 0; /* HILANGKAN: margin top */
-        padding-top: 20px; /* TAMBAHKAN: padding top */
+        margin-top: 0;
+        padding-top: 15px;
+    }
+    
+    .illustration {
+        width: 40%;
+    }
+
+    .nav-buttons {
+        gap: 5px;
+    }
+
+    .nav-button {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
+    .scroll-to-top {
+        width: 35px;
+        height: 35px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+    }
+
+    .portfolio-image {
+        height: 160px;
+    }
+    
+    .project-img {
+        filter: blur(20%);
     }
 }
